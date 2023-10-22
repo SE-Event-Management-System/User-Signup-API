@@ -1,7 +1,7 @@
 const {infoLogger, errorLogger} = require('../../logger/logger');
 const mongoose = require('mongoose');
 const User = require('../models/user');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const errors = require('../../errors/errors')
 
 async function signUpService(req, res, next){
@@ -13,7 +13,7 @@ async function signUpService(req, res, next){
             infoLogger(req.custom.id, req.body.requestId, "User data is already present in the db")
             return res.status(409).json({
                 statusCode: 1,
-                timestamp: Date.now,
+                timestamp: Date.now(),
                 requestId: req.body.requestId,
                 info: {
                     code: errors['003'].code,
@@ -29,7 +29,7 @@ async function signUpService(req, res, next){
                 infoLogger(req.custom.id, req.body.requestId, "Error in hashing the password")
                 return res.status(500).json({
                     statusCode: 1,
-                    timestamp: Date.now,
+                    timestamp: Date.now(),
                     requestId: req.body.requestId,
                     info: {
                         code: errors['001'].code,
@@ -54,7 +54,7 @@ async function signUpService(req, res, next){
                 infoLogger(req.custom.id, req.body.requestId, "User saved successfully")
                 return res.status(201).json({
                     statusCode: 0,
-                    timestamp: Date.now,
+                    timestamp: Date.now(),
                     requestId: req.body.requestId,
                     info: {
                         code: errors['000'].code,
@@ -67,7 +67,7 @@ async function signUpService(req, res, next){
                 errorLogger(req.custom.id, req.body.requestId, `Error while saving user in the database | ${e.message}`, e)
                 return res.status(500).json({
                     statusCode: 1,
-                    timestamp: Date.now,
+                    timestamp: Date.now(),
                     requestId: req.body.requestId,
                     info: {
                         code: errors['002'].code,
@@ -83,7 +83,7 @@ async function signUpService(req, res, next){
         errorLogger(req.custom.id, req.body.requestId, `Unexpected error while searching by email id | ${err.message}`, err)
         return res.status(500).json({
             statusCode: 1,
-            timestamp: Date.now,
+            timestamp: Date.now(),
             requestId: req.body.requestId,
             info: {
                 code: errors['006'].code,
