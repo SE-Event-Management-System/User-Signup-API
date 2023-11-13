@@ -7,11 +7,15 @@ const mongoose = require('mongoose');
 const {v4} = require('uuid')
 const routeVersioning = require('./src/index');
 const errors = require('./errors/errors');
+const cors = require('cors');
+  
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use((req, res, next) => {
     const contentType = req.get('content-type');
     if (!contentType || contentType != 'application/json'){
+        res.header('Access-Control-Allow-Origin', '*');
         return res.status(400).json({
             statusCode: 1,
             timestamp: Date.now(),
