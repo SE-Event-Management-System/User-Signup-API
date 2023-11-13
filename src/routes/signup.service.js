@@ -11,6 +11,7 @@ async function signUpService(req, res, next){
         const usersFromDb = await User.find({email: req.body.email});
         if (usersFromDb.length){
             infoLogger(req.custom.id, req.body.requestId, "User data is already present in the db")
+            res.header('Access-Control-Allow-Origin', '*');
             return res.status(409).json({
                 statusCode: 1,
                 timestamp: Date.now(),
