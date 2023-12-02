@@ -47,7 +47,8 @@ async function signUpService(req, res, next){
                 password: hashedPassword,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                isAdmin: req.body.role == 'organizer' ? true : false
+                isAdmin: req.body.role == 'organizer' ? true : false,
+                organizerName: req.body.organizerName
             });
 
             try{

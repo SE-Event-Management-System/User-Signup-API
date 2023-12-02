@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpires: Date,
     bio:{type:String, default:null},
     isAdmin:{type:Boolean, default: false},
+    organizerName: {type: String, default: null},
     userPic: String
 })
 

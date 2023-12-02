@@ -8,12 +8,13 @@ Content-Type: application/json
     "firstName": "Rutvij",
     "lastName": "Dave",
     "email": "rutdave123@gmail.com",
-    "password": "123456789"
+    "password": "123456789",
+    "role": "organizer"
 }
 
 ### Signup API Local
 
-POST http://localhost:3000/api/v1/signup HTTP/1.1
+POST http://localhost:4000/api/v1/signup HTTP/1.1
 Content-Type: application/json
 
 {
@@ -21,5 +22,6 @@ Content-Type: application/json
     "firstName": "Rutvij",
     "lastName": "Dave",
     "email": "rutdave12@gmail.com",
-    "password": "123456789"
+    "password": "123456789",
+    "role": "organizer"
 }
