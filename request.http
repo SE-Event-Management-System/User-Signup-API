@@ -7,7 +7,7 @@ Content-Type: application/json
     "requestId": "123456543",
     "firstName": "Rutvij",
     "lastName": "Dave",
-    "email": "rutdave12@gmail.com",
+    "email": "rutdave123@gmail.com",
     "password": "123456789"
 }
 
