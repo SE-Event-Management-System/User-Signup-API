@@ -10,7 +10,13 @@ const userSchema = new mongoose.Schema({
     },
     password: {type: String, required: true},
     firstName: {type: String, required: true},
-    lastName: {type: String, required: true}
+    lastName: {type: String, required: true},
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
+    bio:{type:String, default:null},
+    isAdmin:{type:Boolean, default: false},
+    organizerName: {type: String, default: null},
+    userPic: String
 })
 
 module.exports = mongoose.model('User', userSchema)
