@@ -4,13 +4,14 @@ const {infoLogger} = require('../../logger/logger')
 
 
 module.exports = function(req, res, next) {
+    console.log(req.body)
     const schema = Joi.object({
         requestId: Joi.string().required(),
         role: Joi.string().valid("user", "organizer").required(),
         organizerName: Joi.string().when('role', {
             is: 'organizer',
             then: Joi.string().required(),
-            otherwise: Joi.string().optional()
+            otherwise: Joi.string().optional().allow("").allow(null)
         }),
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
